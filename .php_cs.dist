@@ -1,0 +1,80 @@
+<?php
+
+/**
+* align_multiline_comment 每行代码是对齐的
+* no_trailing_whitespace 删除非空行尾部的尾部空白
+* no_trailing_whitespace_in_comment 注释和phpdocs中不得有空格
+* no_unused_imports 未使用的use语句必须删除
+* array_indentation 数组元素都是缩进的
+* array_syntax syntax（'long'，'short'）是否使用long或short数组语法; 默认为'long'
+* blank_line_after_namespace 命名空间声明之后必须有一个空行
+* class_definition 一个类，特征或接口定义的关键字周围的空格应该是一个空格
+* function_declaration 空间应正确放置在函数声明中
+* ordered_imports use引入类按照长度从小到达排序
+* single_class_element_per_statement 每个声明不得多于一个属性或常量
+* no_useless_else 不应该有无用的else
+* no_useless_return 在return函数结尾处不应该有空的声明
+* no_empty_statement 删除无用的分号语句
+* no_blank_lines_before_namespace 在命名空间声明之前不应该有空行
+* no_whitespace_in_blank_line 删除空白行末尾的空白
+* normalize_index_brace 数组索引应始终使用方括号书写
+* elseif 应该使用关键字而不是else if所有的控制关键字看起来像单个单词
+* indentation_type 代码必须使用配置的缩进类型
+* line_ending 所有PHP文件都必须使用相同的行结尾
+* lowercase_constants PHP的常量true，false以及null必须是小写
+* lowercase_keywords PHP关键字必须采用小写字母
+* method_argument_space 在方法参数和方法调用中，每个逗号前面不能有空格，每个逗号后必须有一个空格。
+* no_closing_tag 结束?>标记必须从仅包含PHP的文件中省略
+* no_spaces_after_function_name 在进行方法或函数调用时，方法或函数名称与左括号之间不能有空格
+* no_spaces_inside_parenthesis 左括号后面不能有空格。在结束括号之前不得有空格
+* single_blank_line_at_eof 没有结束标签的PHP文件必须始终以一个空行换行符结束
+* single_import_per_statement 每个声明必须有一个使用关键字
+* single_line_after_imports 每个命名空间使用必须自己行，并且在use语句块之后必须有一个空行
+* switch_case_semicolon_to_colon 一个switch后面应该是冒号而不是分号
+* switch_case_space switch删除冒号和大小写值之间的多余空格
+* full_opening_tag PHP代码必须使用长<?php标签或短<?=标签，而不是其他标签变体
+* ternary_operator_spaces 标准化三元运算符周围的空间
+*/
+
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+            '@PSR2' => true,
+            'align_multiline_comment' => true,
+            'no_trailing_whitespace' => true,
+            'no_trailing_whitespace_in_comment' => true,
+            'array_indentation' => true,
+            'blank_line_after_namespace' => true,
+            'braces' => true,
+            'class_definition' => true,
+            'function_declaration' => true,
+            'ordered_imports' => ['sortAlgorithm' => 'length'],
+            'single_class_element_per_statement' => ['elements' => ['property']],
+            'no_useless_return' => true,
+            'no_empty_statement' => true,
+            'no_blank_lines_before_namespace' => true,
+            'no_whitespace_in_blank_line' => true,
+            'normalize_index_brace' => true,
+            'elseif' => true,
+            'indentation_type' => true,
+            'line_ending' => true,
+            'lowercase_constants' => true,
+            'lowercase_keywords' => true,
+            'method_argument_space' => ['ensure_fully_multiline' => true],
+            'no_closing_tag' => true,
+            'no_spaces_after_function_name' => true,
+            'no_spaces_inside_parenthesis' => true,
+            'single_blank_line_at_eof' => true,
+            'single_import_per_statement' => true,
+            'single_line_after_imports' => true,
+            'switch_case_semicolon_to_colon' => true,
+            'switch_case_space' => true,
+            'full_opening_tag' => true,
+            'ternary_operator_spaces' => true
+    ])
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->exclude('/www')
+            ->in(__DIR__)
+    )
+;
